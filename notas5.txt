@@ -1,0 +1,42 @@
+if len(locales) < 10:
+            nombre = input("\nIngrese el nombre del nuevo local: ")
+            ubicacion = input("Ingresa la ubicación del local: ")
+            rubro = input("A que rubro pertenece el local? (indumentaria, perfumería o gastronomía. Recuerde usar los acentos.)")
+            
+            if rubro not in rubros_validos:
+                print("El rubro que ingresaste no es valido")
+                continue
+
+            local_nuevo = local(nombre, ubicacion, rubro)
+            locales.append(local_nuevo)
+            rubros_validos[rubro] += 1
+
+            rubro_max = max(rubros_validos, key=rubros_validos.get)
+            cant_max = rubros_validos[rubro_max]
+            print("Rubro con más locales: {} con {} locales".format(rubro_max, cant_max))
+
+            rubro_min = min(rubros_validos, key=rubros_validos.get)
+            cant_min = rubros_validos[rubro_min]
+            print("Rubro con menos locales: {} con {} locales".format(rubro_min, cant_min))
+            
+            print("\nEl local se ha creado exitosamente\n")
+
+        else:
+            print("Se ha alcanzado el número maximo de locales (10)")
+
+  
+    elif option == 2:
+        print("Se han creado {} locales:".format(len(locales)))
+        for i, local in enumerate(locales):
+            print("{}. {}".format(i+1, local.nombre))
+
+        num_local = int(input("Ingrese el numero del local que quiere consultar: "))
+        if num_local == 0:
+            continue
+        elif num_local > len(locales):
+            print("El número ingresado no es valido")
+        else:
+            local_seleccionado = locales[num_local - 1]
+            print("Ha seleccionado el local: {}\nUbicación: {}\nRubro: {}".format(local_seleccionado.nombre, local_seleccionado.ubicacion, local_seleccionado.rubro))
+            
+            vuelta = input("Presiona Enter para continuar")

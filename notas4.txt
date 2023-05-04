@@ -1,0 +1,2 @@
+print("El rubro que tiene más locales es {} con un total de {} locales".format(rubro_max, rubros_validos[rubro_max]))
+            print("Y el rubro que tiene menos locales es {} con una cantidad de {} locales\n".format(rubro_min, rubros_validos[rubro_min]))

@@ -1,0 +1,18 @@
+user = None
+pasw = None
+intent = 0
+while pasw != "12345" and user != "admin@shopping.com" and intent < 3:
+
+    while user != "admin@shopping.com":
+        user = input("correo equivocado intente de nuevo\n\n")
+    intent += 1   
+
+    while pasw != "12345":
+        pasw = input("contraseña equivocada intente de nuevo\n\n")
+        print(intent)
+    intent += 1    
+
+    if intent == 3:
+        print("LE ERRASTE 3 VECES FLACO VOLA")
+
+print("lo lograste flaco")

@@ -1,0 +1,16 @@
+user = None
+pasw = None
+intent = 0
+while pasw != "12345" and user != "admin@shopping.com" and intent < 3:
+
+    user = input("ingrese correo\n\n")
+    if user != "admin@shopping.com":
+        intent += 1
+        while user != "admin@shopping.com":
+            intent += 1
+            user = input("ingrese correo correcto\n\n")
+
+    if intent == 3:
+        print("LE ERRASTE 3 VECES FLACO VOLA")
+
+print("lo lograste flaco")
