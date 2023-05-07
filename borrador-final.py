@@ -1,4 +1,4 @@
-#integrantes: Lucas Di Paolo, Matias Alvarez Costa, Alexis Fernandez, Santiago Trillo.
+#integrantes: Lucas Di Paolo, Matias Alvarez Costa, Alexis Fernandez, Santiago Trillo. Todos de la comision 101
 #Declaro las variables necesarias para el algoritmo de inicio de sesión
 nombreUsuario = ""
 claveUsuario = ""
