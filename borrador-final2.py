@@ -1,4 +1,3 @@
-#integrantes: Lucas Di Paolo, Matias Alvarez Costa, Alexis Fernandez, Santiago Trillo.
 #Declaro las variables necesarias para el algoritmo de inicio de sesión
 nombreUsuario = ""
 claveUsuario = ""
@@ -47,6 +46,42 @@ rubros_validos = {
     "perfumería": 0,
     "gastronomía": 0
 }
+
+def proceso():
+    global locales
+    global rubros_validos
+    if len(locales) < 3:
+        nombreLocal = input("\nIngrese el nombre del nuevo local: ")
+        ubicacionLocal = input("Ingresa la ubicación del local: ")
+        rubroLocal = input("¿A que rubro pertenece el local? (indumentaria, perfumería o gastronomía. Recuerde usar los acentos.)")
+
+                    #verifico que el rubro ingresado sea alguno de los que estan dentro del diccionario creado anteriormente
+        if rubroLocal not in rubros_validos:
+            print("El rubro que ingresaste no es valido")
+                    
+                    #añado el local creado a la lista de locales y sumo 1 al rubro al que pertenece el local creado
+            local_nuevo = local(nombreLocal, ubicacionLocal, rubroLocal)
+            locales.append(local_nuevo)
+            rubros_validos[rubroLocal] += 1
+
+                    #obtengo el valor del rubro con más cantidad de locales y lo muestro
+            rubro_max = max(rubros_validos, key=rubros_validos.get)
+            cant_max = rubros_validos[rubro_max]
+            print("Rubro con más locales: {} con {} locales".format(rubro_max, cant_max))
+                    
+                    #obtengo el valor del rubro con menos cantidad de locales y lo muestro
+            rubro_min = min(rubros_validos, key=rubros_validos.get)
+            cant_min = rubros_validos[rubro_min]
+            print("Rubro con menos locales: {} con {} locales".format(rubro_min, cant_min))
+                
+            print("\nEl local se ha creado exitosamente\n")
+            return
+    else:
+        print("Se ha alcanzado el número maximo de locales (10)")
+
+    return
+            
+    
 #mientras se cumplan las condiciones estipuladas el sistema seguida funcionando y al declarar una variable con 0 si luego la cambio
 #se dejaran de cumplir todas las condiciones y asi podremos finalizar el programa
 salida = 0
@@ -80,43 +115,13 @@ while nombreUsuario == "admin@shopping.com" and claveUsuario == "12345" and sali
             #le pregunte al usuario que opcion elegia y si ingresa "a" y la cantidad de locales creados es menor a 10 le pedire
             #que ingrese los valores de los atributos del local que quiere crear
             if secondOption == "a":
-            
-                if len(locales) < 10:
-                    nombreLocal = input("\nIngrese el nombre del nuevo local: ")
-                    ubicacionLocal = input("Ingresa la ubicación del local: ")
-                    rubroLocal = input("¿A que rubro pertenece el local? (indumentaria, perfumería o gastronomía. Recuerde usar los acentos.)")
+                proceso()
 
-                    #verifico que el rubro ingresado sea alguno de los que estan dentro del diccionario creado anteriormente
-                    if rubroLocal not in rubros_validos:
-                        print("El rubro que ingresaste no es valido")
-                        continue
-                    
-                    #añado el local creado a la lista de locales y sumo 1 al rubro al que pertenece el local creado
-                    local_nuevo = local(nombreLocal, ubicacionLocal, rubroLocal)
-                    locales.append(local_nuevo)
-                    rubros_validos[rubroLocal] += 1
-
-                    #obtengo el valor del rubro con más cantidad de locales y lo muestro
-                    rubro_max = max(rubros_validos, key=rubros_validos.get)
-                    cant_max = rubros_validos[rubro_max]
-                    print("Rubro con más locales: {} con {} locales".format(rubro_max, cant_max))
-                    
-                    #obtengo el valor del rubro con menos cantidad de locales y lo muestro
-                    rubro_min = min(rubros_validos, key=rubros_validos.get)
-                    cant_min = rubros_validos[rubro_min]
-                    print("Rubro con menos locales: {} con {} locales".format(rubro_min, cant_min))
-                
-                    print("\nEl local se ha creado exitosamente\n")
-
-                else:
-                    print("Se ha alcanzado el número maximo de locales (10)")
-            
             elif secondOption == "b" or secondOption == "c":
                 print("\nEn construcción...")
             
             elif secondOption not in opciones2_validas:
                 print("La opcion ingresada no es valida")
-            
     elif option == 4:
         construc2 = ["a","b","c","d"]
         thirdoption = ""
